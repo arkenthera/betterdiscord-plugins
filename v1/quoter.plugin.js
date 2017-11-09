@@ -1217,7 +1217,9 @@
 		        onQuoteMessageClick(channel, message, e) {
 		            e.preventDefault();
 		            e.stopPropagation();
-		            ContextMenuActions.close();
+		            //ContextMenuActions.close(); <- calls window.close() which closes the discord window
+			    $('.context-menu').hide(); // will hide the context menu UI. Wont actually close it next time you left-click somewhere
+			
 		            const {channelTextAreaForm, oldText} = this.tryClearQuotes();
 		            const citeFull = this.getSetting('citeFull');
 	
